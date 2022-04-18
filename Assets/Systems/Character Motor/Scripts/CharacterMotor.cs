@@ -65,6 +65,8 @@ public class CharacterMotor : MonoBehaviour, IDamageable
     public bool CanCurrentlyJump => Config.CanJump && CurrentStamina >= Config.StaminaCost_Jumping;
     public bool CanCurrentlyRun => Config.CanRun && CurrentStamina > 0f;
 
+    public float CurrentRadius => Config.Radius;
+
     public float CurrentHeight
     {
         get

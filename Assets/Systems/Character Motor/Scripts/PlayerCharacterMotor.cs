@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerCharacterMotor : CharacterMotor
 {
     [SerializeField] protected Transform LinkedCamera;
+    [SerializeField] UnityEvent OnSecondary = new UnityEvent();
 
     protected float CurrentCameraPitch = 0f;
     protected float HeadbobProgress = 0f;
@@ -65,6 +67,9 @@ public class PlayerCharacterMotor : CharacterMotor
     protected void OnSecondaryAction(InputValue value)
     {
         _Input_SecondaryAction = value.isPressed;
+
+        if (_Input_SecondaryAction)
+            OnSecondary.Invoke();
     }
 
     #endregion
